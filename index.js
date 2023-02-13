@@ -21,4 +21,15 @@ app.get("/short/:short", function (req, res) {
         console.log(err);
     });
 });
+app.get("/unsubscribe", function (req, res) {
+    let params=req.url.split('?')[1]
+    axios
+    .get("https://api-tendex.de/api/v1/blacklist/unsubscribe?"+params)
+    .then((result) => {
+        res.send(result.data)
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+});
 
